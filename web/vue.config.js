@@ -8,13 +8,21 @@ function resolve (dir) {
     return path.join(__dirname, dir)
 }
 module.exports = {
-    // 路径别名
     chainWebpack: config => {
+        // 路径别名
         config.resolve.alias
             .set('@', resolve('src'))
             .set('components', resolve('src/components'))
             .set('assets', resolve('src/assets'))
-    },
+        config.module
+            .rule('scss')
+            .oneOf('vue')
+            .use('px2rem-loader')
+            .loader('px2rem-loader')
+            .before('postcss-loader') // this makes it work.
+            .options({ remUnit: 75, remPrecision: 8 })
+            .end()
+    },   
     // 开发环境访问地址、代理等配置
     devServer: {
         host: 'localhost',

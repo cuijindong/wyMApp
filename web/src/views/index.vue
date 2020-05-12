@@ -3,7 +3,7 @@
  * @Date: 2020-05-11 22:12:20
  -->
 <template>
-    <div>
+    <div class="test">
         1111111
     </div>
 </template>
@@ -15,5 +15,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+.test{
+    width: 750px;
+}
 </style>
