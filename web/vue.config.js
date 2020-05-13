@@ -25,7 +25,7 @@ module.exports = {
     },   
     // 开发环境访问地址、代理等配置
     devServer: {
-        host: 'localhost',
+        host: '192.168.1.104',
         port: 8000,
         proxy: {
             '/api': {
