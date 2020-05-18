@@ -10,6 +10,7 @@ import Vant from 'vant';
 import 'vant/lib/index.css';
 // 移动端适配
 import 'lib-flexible/flexible'
+import 'assets/css/icon.css'
 
 Vue.config.productionTip = false
 

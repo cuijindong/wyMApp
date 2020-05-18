@@ -1,0 +1,23 @@
+{
+  "id": "1827169",
+  "name": "app",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "7009646",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "9402942",
+      "name": "列表",
+      "font_class": "changyongicon-",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    }
+  ]
+}

@@ -5,7 +5,7 @@
 <template>
     <div class="fd-menu">
         <div class="fd-left">
-            <van-icon name="wap-nav" />
+            <span class="iconfont">&#xe613;</span>
         </div>
         <div class="fd-center">
             <div 
@@ -19,7 +19,7 @@
             <span>{{item.name}}</span></div>
         </div>
         <div class="fd-right">
-            <van-icon name="search" />
+            <span class="iconfont">&#xe61c;</span>
         </div>
     </div>
 </template>
@@ -87,38 +87,45 @@
     justify-content: space-between;
     color: #7c7c7c;
     .fd-left{
-        font-size: 35px;
         display: flex;
+        span{
+            font-size: 45px;
+            color: #1b1b1b;
+            font-weight: 600;
+        }
     }
     .fd-center{
-        width: 75%;
+        width: 70%;
         height: 100%;
         display: flex;
         align-items: center;
         justify-content: space-around;
         .fd-tab-item{
-            height: 100%;
-            width: 100px;
+            height: calc(100% - 20px);
+            width: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            background-color: #fff;
             transform:scale(1, 1);
-            transition: background-color, transform .3s;
+            background-color: #ffffff;
+            transition: background-color .3s, transform .3s;
             &:active{
-                background-color: #ececec;
+                background-color: rgba(228, 228, 228, 0.53);
             }
         }
     }
     .fd-right{
-        font-size: 35px;
         display: flex;
-        background-color: #fff;
-        border-radius: 50%;
-        transition: background-color .5s;
+        transform:scale(1, 1);
+        transition: transform .3s;
+        span{
+            font-size: 45px;
+            color: #1b1b1b;
+            font-weight: 500;
+        }
         &:active{
-            background-color: #ececec;
+            transform:scale(1.2, 1.2);
         }
     }
 }
