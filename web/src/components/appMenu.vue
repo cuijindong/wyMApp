@@ -1,21 +1,26 @@
 <!--
-import { throws } from 'assert';
-import { throws } from 'assert';
-import { throws } from 'assert';
  * @Author: cjd
  * @Date: 2020-05-13 22:23:31
  -->
 <template>
-    <div class="fd-tabbar">
-        <div 
-            class="fd-tab-item"
-            :class="{'fd-active' : item.value === active}"
-            :style="item.value === active ? `color:${activeColor}` : `color:${noActiveColor}`"
-            v-for="(item, index) in tabs"
-            :key="index"
-            @click="handleTadActive(item)"
-        >
-        <span>{{item.name}}</span></div>
+    <div class="fd-menu">
+        <div class="fd-left">
+            <van-icon name="wap-nav" />
+        </div>
+        <div class="fd-center">
+            <div 
+                class="fd-tab-item"
+                :class="{'fd-active' : item.value === actived}"
+                :style="item.value === actived ? `color:${activeColor}` : `color:${noActiveColor}`"
+                v-for="(item, index) in tabs"
+                :key="index"
+                @click="handleTadActive(item)"
+            >
+            <span>{{item.name}}</span></div>
+        </div>
+        <div class="fd-right">
+            <van-icon name="search" />
+        </div>
     </div>
 </template>
 
@@ -51,6 +56,11 @@ import { throws } from 'assert';
                 }
             }
         },
+        data () {
+            return {
+                actived: this.active
+            }
+        },
         methods: {
             /**
              * @description: tab点击，事件来抛出
@@ -58,7 +68,7 @@ import { throws } from 'assert';
              * @return: 
              */
             handleTadActive(item) {
-                this.active = item.value
+                this.actived = item.value
                 this.$emit('getValue', item.value)
                 this.$emit('getItem', item)
             }
@@ -67,40 +77,54 @@ import { throws } from 'assert';
 </script>
 
 <style lang="scss" scoped>
-.fd-tabbar{
-    font-size: 0.4rem;
+.fd-menu{
+    font-size: 30px;
     display: flex;
     width: 100%;
     height: 100px;
+    padding: 0 20px;
     align-items: center;
     justify-content: space-between;
     color: #7c7c7c;
-    .fd-tab-item{
+    .fd-left{
+        font-size: 35px;
+        display: flex;
+    }
+    .fd-center{
+        width: 75%;
         height: 100%;
         display: flex;
         align-items: center;
+        justify-content: space-around;
+        .fd-tab-item{
+            height: 100%;
+            width: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #fff;
+            transform:scale(1, 1);
+            transition: background-color, transform .3s;
+            &:active{
+                background-color: #ececec;
+            }
+        }
+    }
+    .fd-right{
+        font-size: 35px;
+        display: flex;
+        background-color: #fff;
         border-radius: 50%;
-        background: url('../assets/img/appMenu/clickBg.png') no-repeat center;
-        background-size: 0%;
-        transition: background-size .3s;
-        &:hover{
-            background-size: 100%;
-        }
+        transition: background-color .5s;
         &:active{
-            // background: #ececec;
-            background-size: 100%;
-        }
-        span{
-            padding: 0 20px;
+            background-color: #ececec;
         }
     }
 }
 .fd-active{
-    font-size: 40px;
+    transform:scale(1.2, 1.2) !important;
     font-weight: bolder;
     color: #1b1b1b;
-    span{
-        padding: 0 10px !important;
-    }
 }
 </style>

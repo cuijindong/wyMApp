@@ -4,32 +4,16 @@
  -->
 <template>
     <div class="fd-home">
-        <div class="fd-header">
-            <div>1111</div>
-            <div class="test">
-                <menus :tabs="tabs" @getValue="getValue" active="2"></menus>
-            </div>
-            <div>1111</div>
-        </div>
+        <home-header></home-header>
     </div>
 </template>
 
 <script>
-import menus from 'components/appMenu.vue'
+import homeHeader from '@/views/homeHeader.vue'
     export default {
         components: {
-            menus,
-        },
-        data() {
-            return {
-                tabs: [{name: '我的', value: '1'}, {name: '发现', value: '2'}, {name: '云村', value: '3'}, {name: '视频', value: '4'}]
-            }
-        },
-        methods: {
-            getValue(v) {
-                console.log(v)
-            }
-        },
+            homeHeader,
+        }
     }
 </script>
 
