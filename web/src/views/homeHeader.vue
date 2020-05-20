@@ -1,6 +1,10 @@
+<!--
+ * @Author: cjd
+ * @Date: 2020-05-18 21:37:00
+--> 
 <template>
   <div class="fd-header">
-    <menus :tabs="tabs" @getValue="getValue" active="2"></menus>
+    <menus :tabs="tabs" @getValue="getValue" :active="active"></menus>
   </div>
 </template>
 
@@ -13,11 +17,12 @@ export default {
   data() {
     return {
       tabs: [
-        { name: "我的", value: "/my" },
-        { name: "发现", value: "/found" },
-        { name: "云村", value: "/clouds" },
-        { name: "视频", value: "/video" }
-      ]
+        { name: "我的", value: "my" },
+        { name: "发现", value: "found" },
+        { name: "云村", value: "clouds" },
+        { name: "视频", value: "videoapp" }
+      ],
+      active: 'found'
     };
   },
   methods: {
@@ -25,7 +30,7 @@ export default {
      * 菜单点击事件
      */
     getValue(v) {
-      console.log(v);
+      this.$emit('changeComp', v)
     }
   }
 };

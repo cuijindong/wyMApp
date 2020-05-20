@@ -4,19 +4,42 @@
  -->
 <template>
     <div class="fd-home">
-        <home-header></home-header>
+        <home-header @changeComp="handleChangeComp"></home-header>
         <div class="fd-content">
-            <router-view></router-view>
+            <component :is="comp"></component>
         </div>
     </div>
 </template>
 
 <script>
 import homeHeader from '@/views/homeHeader.vue'
+import my from '@/views/my'
+import found from '@/views/found'
+import clouds from '@/views/clouds'
+import videoapp from '@/views/videoapp'
     export default {
         components: {
             homeHeader,
-        }
+            my,             // 我的
+            found,          // 发现
+            clouds,         // 云村
+            videoapp,          // 视频
+        },
+        data() {
+            return {
+                comp: 'found'
+            }
+        },
+        methods: {
+            /**
+             * @description: 改变组件
+             * @param {type} 
+             * @return: 
+             */            
+            handleChangeComp(v) {
+                this.comp = v
+            }
+        },
     }
 </script>
 

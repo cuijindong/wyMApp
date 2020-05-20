@@ -2,6 +2,7 @@
  * @Author: cjd
  * @Date: 2020-05-11 22:14:37
  */
+const BaseUrl = require("./src/api/config");
 const path = require('path')
 
 function resolve (dir) {
@@ -28,10 +29,12 @@ module.exports = {
         host: '192.168.1.104',
         port: 8000,
         proxy: {
-            '/api': {
-                target: 'http://xxx.xxxx.xxx',
-                pathReWrite: {
-                    '^/api': ''
+            [BaseUrl.ROOT]: {
+                target: BaseUrl.URL,
+                changeOrigin: true, // 跨域
+                ws: true,
+                pathRewrite: {
+                    [`^${BaseUrl.ROOT}`]: ''
                 }
             }
         }

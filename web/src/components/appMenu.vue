@@ -61,9 +61,6 @@
                 actived: this.active
             }
         },
-        mounted () {
-            
-        },
         methods: {
             /**
              * @description: tab点击，事件来抛出
@@ -71,9 +68,6 @@
              * @return: 
              */
             handleTadActive(item) {
-                this.$('.fd-active').mouseup(() => {
-                    this.$(this).css({'background': 'red'})
-                })
                 this.actived = item.value
                 this.$emit('getValue', item.value)
                 this.$emit('getItem', item)

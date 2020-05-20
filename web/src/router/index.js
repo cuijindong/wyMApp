@@ -11,7 +11,7 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
-    component: () => import('@/views/index.vue')
+    component: () => import('@/views/index.vue'),
   },
 ]
 

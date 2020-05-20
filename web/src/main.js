@@ -13,16 +13,17 @@ import 'lib-flexible/flexible'
 // 阿里图标
 import 'assets/css/icon.css'
 import $ from 'jquery'
+import http from './api/index.js'
 
 Vue.config.productionTip = false
 
 Vue.use(Vant)
 
 Object.assign(Vue.prototype, {
-  $: $
+  $: $,
+  $http: http
 })
 
-console.log(Vue.prototype)
 new Vue({
   router,
   store,
