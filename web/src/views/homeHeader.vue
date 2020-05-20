@@ -5,30 +5,35 @@
 </template>
 
 <script>
-import menus from 'components/appMenu.vue'
-  export default {
-    components: {
-        menus,
-    },
-    data() {
-      return {
-          tabs: [{name: '我的', value: '1'}, {name: '发现', value: '2'}, {name: '云村', value: '3'}, {name: '视频', value: '4'}]
-      }
-    },
-    methods: {
-      /**
-       * 菜单点击事件
-       */
-      getValue(v) {
-          console.log(v)
-      }
-    },
+import menus from "components/appMenu.vue";
+export default {
+  components: {
+    menus
+  },
+  data() {
+    return {
+      tabs: [
+        { name: "我的", value: "/my" },
+        { name: "发现", value: "/found" },
+        { name: "云村", value: "/clouds" },
+        { name: "视频", value: "/video" }
+      ]
+    };
+  },
+  methods: {
+    /**
+     * 菜单点击事件
+     */
+    getValue(v) {
+      console.log(v);
+    }
   }
+};
 </script>
 
 <style lang="scss" scoped>
-.fd-header{
+.fd-header {
   height: 100px;
-  width: 100%
+  width: 100%;
 }
 </style>

@@ -10,12 +10,19 @@ import Vant from 'vant';
 import 'vant/lib/index.css';
 // 移动端适配
 import 'lib-flexible/flexible'
+// 阿里图标
 import 'assets/css/icon.css'
+import $ from 'jquery'
 
 Vue.config.productionTip = false
 
 Vue.use(Vant)
 
+Object.assign(Vue.prototype, {
+  $: $
+})
+
+console.log(Vue.prototype)
 new Vue({
   router,
   store,

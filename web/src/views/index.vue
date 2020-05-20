@@ -5,6 +5,9 @@
 <template>
     <div class="fd-home">
         <home-header></home-header>
+        <div class="fd-content">
+            <router-view></router-view>
+        </div>
     </div>
 </template>
 
