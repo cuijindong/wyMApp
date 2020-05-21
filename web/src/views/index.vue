@@ -44,11 +44,7 @@ import videoapp from '@/views/videoapp'
 </script>
 
 <style lang="scss" scoped>
-.test{
-    height: 100px;
-    width: 70%;
-}
-.fd-header{
-    display: flex;
+.fd-content{
+    font-size: 20px;
 }
 </style>

@@ -8,6 +8,7 @@ body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, l
     font-family: "Microsoft Yahei",sans-serif;
     -webkit-tap-highlight-color:transparent;
     -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
     &:focus {
         outline: none;
     }
@@ -24,4 +25,12 @@ html, body {
 }
 .fd-floatR{
     float: right;
+}
+.fd-marginBott{
+    margin-bottom: 20px;
+}
+.fd-textOverflow{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

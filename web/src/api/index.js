@@ -4,5 +4,5 @@
  */ 
 import { http } from './http.js'
 export default {
-    banner: http('get', '/banner')
+    banner: () => http('get', '/banner'),
 }
