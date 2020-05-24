@@ -4,5 +4,8 @@
  */ 
 import { http } from './http.js'
 export default {
-    banner: () => http('get', '/banner'),
+    // 轮播图
+    banner: (data) => http('post', '/banner', data),
+    // 推荐歌单
+    tjgd: (data) => http('post', '/personalized', data)
 }

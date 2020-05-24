@@ -40,5 +40,10 @@ export default {
 .fd-header {
   height: 100px;
   width: 100%;
+  margin-bottom: 20px;
+  position: fixed;
+  top: 0;
+  z-index: 10001;
+  background: #ffffff;
 }
 </style>

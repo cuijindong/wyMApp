@@ -16,7 +16,6 @@ if (process.env.NODE_ENV === "development") {
   //生产环境下的地址
   ROOT = URL;
 }
-console.log(ROOT, URL)
 // export default { ROOT, URL };
 exports.URL = URL; //代理指向地址
 exports.ROOT = ROOT;

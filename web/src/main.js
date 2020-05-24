@@ -14,6 +14,7 @@ import 'lib-flexible/flexible'
 import 'assets/css/icon.css'
 import $ from 'jquery'
 import http from './api/index.js'
+import utils from './utils'
 
 Vue.config.productionTip = false
 
@@ -21,7 +22,8 @@ Vue.use(Vant)
 
 Object.assign(Vue.prototype, {
   $: $,
-  $http: http
+  $http: http,
+  $utils: utils
 })
 
 new Vue({

@@ -45,6 +45,6 @@ import videoapp from '@/views/videoapp'
 
 <style lang="scss" scoped>
 .fd-content{
-    font-size: 20px;
+    margin-top: 110px;
 }
 </style>

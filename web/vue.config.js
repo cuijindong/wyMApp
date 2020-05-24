@@ -9,6 +9,13 @@ function resolve (dir) {
     return path.join(__dirname, dir)
 }
 module.exports = {
+    css: {
+        loaderOptions: {
+            sass: {
+                prependData: `@import "assets/css/public.scss";`
+            }
+        }
+    },
     chainWebpack: config => {
         // 路径别名
         config.resolve.alias

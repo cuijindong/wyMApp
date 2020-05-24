@@ -16,7 +16,11 @@ function http (method, url, data) {
     let instance = axios.create({
         baseURL: baseUrl
     })
-    return instance(option)
+    return instance(option).then(response => {
+        if (response.status === 200) {
+            return response.data
+        }
+    })
 }
 export {
     http

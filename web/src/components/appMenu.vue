@@ -82,7 +82,7 @@
     display: flex;
     width: 100%;
     height: 100px;
-    padding: 0 20px;
+    padding: $PubPadding;
     align-items: center;
     justify-content: space-between;
     color: #7c7c7c;
