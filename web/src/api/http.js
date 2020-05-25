@@ -10,7 +10,8 @@ function http (method, url, data) {
     let baseUrl = BaseUrl.ROOT
     let option = {
         url: url,
-        data: qs.stringify(data),
+        data: method === 'post' ? qs.stringify(data) : {},
+        params: method === 'get' ? data : {},
         method: method
     }
     let instance = axios.create({

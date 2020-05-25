@@ -8,7 +8,7 @@
         <div class="fd-content">
             <menu-tab></menu-tab>
             <listx :gdList="tjgdList"></listx>
-            <listy></listy>
+            <listy :gqList="tjgqList"></listy>
         </div>
     </div>
 </template>
@@ -28,7 +28,9 @@ import listy from './listy.vue'
         data() {
             return {
                 // 推荐歌单list
-                tjgdList: []
+                tjgdList: [],
+                // 推荐歌曲list
+                tjgqList: []
             }
         },
         created () {
@@ -45,6 +47,7 @@ import listy from './listy.vue'
              */            
             init() {
                 this.getTjgd()
+                this.getTjgq()
             },
             /**
              * @description: 获取推荐歌单list
@@ -57,6 +60,65 @@ import listy from './listy.vue'
                         this.tjgdList = response.result
                     }
                 })
+            },
+            /**
+             * @description: 获取推荐单曲list
+             * @param {type} 
+             * @return: 
+             */ 
+            getTjgq() {
+                this.search('民谣', 1, 12).then(response => {
+                    if (response.code === 200) {
+                        this.tjgqList = response.result.songs
+                        this.addGqpl(this.tjgqList)
+                        this.addGqxq(this.tjgqList)
+                    }
+                })
+            },
+            /**
+             * @description: 添加歌曲评论
+             * @param {type} 
+             * @return: 
+             */ 
+            addGqpl(list) {
+                let requireList = []
+                list.forEach(v => {
+                    requireList.push(this.$http.commentMusic({id: v.id, limit: 1}))
+                })
+                Promise.all(requireList).then(res => {
+                    res.forEach((v, i) => {
+                        this.tjgqList[i].comment = v
+                    })
+                })
+            },
+            /**
+             * @description: 添加歌曲详情
+             * @param {type} 
+             * @return: 
+             */ 
+            addGqxq(list) {
+                let ids = []
+                list.forEach(v => {
+                    ids.push(v.id)                       
+                })
+                this.$http.songDetail({ids: ids.join(',')}).then(res => {
+                    res.songs.forEach((v, i) => {
+                        this.tjgqList[i].songs = v
+                    })
+                })
+            },
+            /**
+             * @description: 搜索
+             * @param {type} 
+             * @return: 
+             */ 
+            search(keywords, type, limit = 12) {
+                let option = {
+                    keywords: keywords,
+                    type: type,
+                    limit: limit
+                }
+                return this.$http.search(option)
             }
         },
     }

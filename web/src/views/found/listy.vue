@@ -5,75 +5,61 @@
             <div class="fd-button">播放全部</div>
         </div>
         <div class="fd-list">
-            <div class="fd-item">
-                <div class="fd-item-item">
-                    <div class="fd-img">
-                        <img src="../../assets/img/t1.jpg" alt="">
-                    </div>
-                    <div class="fd-details">
-                        <div class="fd-left">
-                            <div class="fd-tops">
-                                <div class="fd-name fd-textOverflow">红色豆豆鞋</div>
-                                <div class="fd-author">- giao哥</div>
+            <van-swipe :loop="false" :show-indicators="false">
+                <van-swipe-item v-for="(item, index) in gqList_c" :key="index">
+                    <div class="fd-item">
+                        <div class="fd-item-item" v-for="(v, i) in item" :key="i">
+                            <div class="fd-img">
+                                <img :src="v.songs.al.picUrl" alt="">
                             </div>
-                            <div class="fd-bottom">
-                                <span class="fd-flag">独家</span>
-                                <div class="fd-text">一城烟雨一楼台一花只为一树开</div>
-                            </div>
-                        </div>
-                        <div class="fd-right">
-                            <div class="fd-item">
-                                <i class="iconfont fd-icon-item">&#xe60f;</i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="fd-item-item">
-                    <div class="fd-img">
-                        <img src="../../assets/img/t2.jpg" alt="">
-                    </div>
-                    <div class="fd-details">
-                        <div class="fd-left">
-                            <div class="fd-tops">
-                                <div class="fd-name fd-textOverflow">范德萨发生（司法所发生是打分）</div>
-                                <div class="fd-author">- 大地色</div>
-                            </div>
-                            <div class="fd-bottom">
-                                <span class="fd-flag">独家</span>
-                                <div class="fd-text">的的粉色粉色水电费是否是</div>
+                            <div class="fd-details">
+                                <div class="fd-left">
+                                    <div class="fd-tops">
+                                        <div class="fd-name fd-textOverflow">{{v.name}}</div>
+                                        <div class="fd-author">- {{v.artists[0].name}}</div>
+                                    </div>
+                                    <div class="fd-bottom">
+                                        <span class="fd-flag">独家</span>
+                                        <div class="fd-text fd-textOverflow">{{v.comment.hotComments[0].content}}</div>
+                                    </div>
+                                </div>
+                                <div class="fd-right">
+                                    <div class="fd-item">
+                                        <i class="iconfont fd-icon-item">&#xe60f;</i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="fd-right"></div>
                     </div>
-                </div>
-                <div class="fd-item-item">
-                    <div class="fd-img">
-                        <img src="../../assets/img/t3.jpg" alt="">
-                    </div>
-                    <div class="fd-details">
-                        <div class="fd-left">
-                            <div class="fd-tops">
-                                <div class="fd-name fd-textOverflow">红大幅度舒服舒服色豆豆鞋</div>
-                                <div class="fd-author">- giao哥</div>
-                            </div>
-                            <div class="fd-bottom">
-                                <span class="fd-flag">独家</span>
-                                <div class="fd-text">一城烟雨一楼台一花只为一树开</div>
-                            </div>
-                        </div>
-                        <div class="fd-right"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="fd-item"></div>
-            <div class="fd-item"></div>
+                </van-swipe-item>
+            </van-swipe>
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        
+        props: {
+            gqList: {
+                type: Array,
+                default: () => []
+            },
+        },
+        computed: {
+            gqList_c() {
+                let arr = []
+                let len = this.gqList.length / 3
+                for (let i = 1; i <= len; i++) {
+                    arr.push(this.gqList.slice((i - 1) * 3, i * 3))
+                }
+                return arr
+            }
+        },
+        watch: {
+            gqList() {
+                console.log(this.gqList_c)
+            }
+        }
     }
 </script>
 
@@ -99,7 +85,6 @@
     }
     .fd-list{
         width: 100%;
-        overflow: auto;
         .fd-item{
             width: 100%;
             .fd-item-item{
