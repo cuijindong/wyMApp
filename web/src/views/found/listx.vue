@@ -5,13 +5,13 @@
 <template>
     <div class="fd-xAxisList fd-marginBott">
         <div class="fd-top">
-            <div class="fd-title">懂你的精选歌单</div>
+            <div class="fd-title">{{title}}</div>
             <div class="fd-button">查看更多</div>
         </div>
         <div class="fd-list">
             <div class="fd-item" v-for="(item, index) in gdList" :key="index">
                 <div class="fd-img">
-                    <img :src="item.picUrl" alt="">
+                    <img :src="item.picUrl || item.coverImgUrl" alt="">
                     <div class="fd-playCount">
                         <i class="iconfont fd-icon-item">&#xe774;</i>
                         <span>{{item.playCount | filteNum}}</span>
@@ -30,9 +30,10 @@
                 type: Array,
                 default: () => []
             },
-        },
-        mounted () {
-            console.log(this.$utils)
+            title: {
+                type: String,
+                default: ''
+            }
         },
         filters: {
             filteNum: function(value) {

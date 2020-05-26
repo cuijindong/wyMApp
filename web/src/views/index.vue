@@ -6,7 +6,9 @@
     <div class="fd-home">
         <home-header @changeComp="handleChangeComp"></home-header>
         <div class="fd-content">
-            <component :is="comp"></component>
+            <keep-live>
+                <component :is="comp"></component>
+            </keep-live>
         </div>
     </div>
 </template>

@@ -7,8 +7,11 @@
         <banner></banner>
         <div class="fd-content">
             <menu-tab></menu-tab>
-            <listx :gdList="tjgdList"></listx>
+            <!-- 精选歌单 -->
+            <listx :gdList="jxgdList" :title="'懂你的精选歌单'"></listx>
             <listy :gqList="tjgqList"></listy>
+            <!-- 精品歌单 -->
+            <listx :gdList="jpgdList" :title="'官方精品歌单'"></listx>
         </div>
     </div>
 </template>
@@ -27,10 +30,12 @@ import listy from './listy.vue'
         },
         data() {
             return {
-                // 推荐歌单list
-                tjgdList: [],
+                // 推荐精选歌单list
+                jxgdList: [],
                 // 推荐歌曲list
-                tjgqList: []
+                tjgqList: [],
+                // 推荐精品歌单list
+                jpgdList: [],
             }
         },
         created () {
@@ -46,19 +51,38 @@ import listy from './listy.vue'
              * @return: 
              */            
             init() {
-                this.getTjgd()
+                this.getJxgd()
                 this.getTjgq()
+                this.getJpgd()    
             },
             /**
-             * @description: 获取推荐歌单list
+             * @description: 获取精品歌单list
              * @param {type} 
              * @return: 
              */            
-            getTjgd() {
-                this.$http.tjgd({limit: 6}).then(response => {
-                    if (response.code) {
-                        this.tjgdList = response.result
-                    }
+            getJpgd() {
+                this.$http.gdflHot().then(res => {
+                    let tags = res.tags
+                    this.$http.jpgd({limit: 6, cat: tags[0].name}).then(response => {
+                        if (response.code === 200) {
+                            this.jpgdList = response.playlists
+                        }
+                    })
+                })
+            },
+            /**
+             * @description: 获取精选歌单list
+             * @param {type} 
+             * @return: 
+             */            
+            getJxgd() {
+                this.$http.gdflHot().then(res => {
+                    let tags = res.tags
+                    this.$http.jxgd({limit: 6, cat: tags[0].name}).then(response => {
+                        if (response.code === 200) {
+                            this.jxgdList = response.playlists
+                        }
+                    })
                 })
             },
             /**
@@ -87,7 +111,7 @@ import listy from './listy.vue'
                 })
                 Promise.all(requireList).then(res => {
                     res.forEach((v, i) => {
-                        this.tjgqList[i].comment = v
+                        this.$set(this.tjgqList[i], 'comment', v)
                     })
                 })
             },
@@ -103,7 +127,7 @@ import listy from './listy.vue'
                 })
                 this.$http.songDetail({ids: ids.join(',')}).then(res => {
                     res.songs.forEach((v, i) => {
-                        this.tjgqList[i].songs = v
+                        this.$set(this.tjgqList[i], 'songs', v)
                     })
                 })
             },

@@ -16,7 +16,7 @@
                                 <div class="fd-left">
                                     <div class="fd-tops">
                                         <div class="fd-name fd-textOverflow">{{v.name}}</div>
-                                        <div class="fd-author">- {{v.artists[0].name}}</div>
+                                        <div class="fd-author fd-textOverflow">- {{v.artists[0].name}}</div>
                                     </div>
                                     <div class="fd-bottom">
                                         <span class="fd-flag">独家</span>
@@ -55,11 +55,6 @@
                 return arr
             }
         },
-        watch: {
-            gqList() {
-                console.log(this.gqList_c)
-            }
-        }
     }
 </script>
 
@@ -122,6 +117,7 @@
                         justify-content: center;
                         .fd-tops{
                             display: flex;
+                            align-items: center;
                             margin-bottom: 10px;
                             .fd-name{
                                 max-width: 70%;
@@ -144,7 +140,8 @@
                                 display: inline-block;       
                                 padding: 0px 3px;
                                 font-weight: bold;
-                                margin-right: 10px;                           
+                                margin-right: 10px;
+                                white-space: nowrap;                          
                             }
                             .fd-text{
                                 font-size: 23px;
