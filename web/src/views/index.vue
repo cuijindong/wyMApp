@@ -6,9 +6,9 @@
     <div class="fd-home">
         <home-header @changeComp="handleChangeComp"></home-header>
         <div class="fd-content">
-            <keep-live>
+            <keep-alive>
                 <component :is="comp"></component>
-            </keep-live>
+            </keep-alive>
         </div>
     </div>
 </template>
@@ -46,7 +46,12 @@ import videoapp from '@/views/videoapp'
 </script>
 
 <style lang="scss" scoped>
+.fd-home {
+    height: 100%;
+}
 .fd-content{
-    margin-top: 110px;
+   width: 100%;
+   height: calc(100% - 200px);
+   overflow: auto;
 }
 </style>

@@ -20,4 +20,10 @@ export default {
     songDetail: (data) => http('get', '/song/detail', data),
     // 歌曲评论
     commentMusic: (data) => http('get', '/comment/music', data),
+    // 歌曲评论
+    commentAlbum: (data) => http('get', '/comment/album', data),
+    // 新歌
+    newSong: (data) => http('get', '/top/song', data),
+    // 新碟（最新专辑）
+    newAlbum: (data) => http('get', '/album/newest', data),
 }

@@ -10,7 +10,7 @@
                     <div class="fd-item">
                         <div class="fd-item-item" v-for="(v, i) in item" :key="i">
                             <div class="fd-img">
-                                <img :src="v.songs.al.picUrl" alt="">
+                                <img v-if="v.songs" :src="v.songs.al.picUrl" alt="">
                             </div>
                             <div class="fd-details">
                                 <div class="fd-left">
@@ -20,7 +20,7 @@
                                     </div>
                                     <div class="fd-bottom">
                                         <span class="fd-flag">独家</span>
-                                        <div class="fd-text fd-textOverflow">{{v.comment.hotComments[0].content}}</div>
+                                        <div class="fd-text fd-textOverflow" v-if="v.comment">{{v.comment.hotComments[0].content}}</div>
                                     </div>
                                 </div>
                                 <div class="fd-right">

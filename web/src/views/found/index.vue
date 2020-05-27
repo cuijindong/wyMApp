@@ -9,9 +9,12 @@
             <menu-tab></menu-tab>
             <!-- 精选歌单 -->
             <listx :gdList="jxgdList" :title="'懂你的精选歌单'"></listx>
+            <!-- 推荐华语歌 -->
             <listy :gqList="tjgqList"></listy>
             <!-- 精品歌单 -->
             <listx :gdList="jpgdList" :title="'官方精品歌单'"></listx>
+            <!-- 新歌新碟 -->
+            <new-song :xgList="tjxgList" :xdList="tjxdList"></new-song>
         </div>
     </div>
 </template>
@@ -21,12 +24,14 @@ import banner from "./banner.vue"
 import menuTab from './menuTab.vue'
 import listx from './listx.vue'
 import listy from './listy.vue'
+import newSong from './newSong'
     export default {
         components: {
             banner,
             menuTab,
             listx,
-            listy
+            listy,
+            newSong
         },
         data() {
             return {
@@ -36,6 +41,10 @@ import listy from './listy.vue'
                 tjgqList: [],
                 // 推荐精品歌单list
                 jpgdList: [],
+                // 推荐新歌list
+                tjxgList: [],
+                // 推荐新碟list
+                tjxdList: []
             }
         },
         created () {
@@ -53,7 +62,27 @@ import listy from './listy.vue'
             init() {
                 this.getJxgd()
                 this.getTjgq()
-                this.getJpgd()    
+                this.getJpgd()
+                this.getXgXd()
+            },
+            /**
+             * @description: 获取精品歌单list
+             * @param {type} 
+             * @return: 
+             */
+            getXgXd() {
+                this.$http.newSong({type: 7}).then(response => {
+                    if (response.code === 200) {
+                        this.tjxgList = response.data.slice(0, 6)
+                        this.addGqpl(this.tjxgList)
+                    }
+                })
+                this.$http.newAlbum().then(response => {
+                    if (response.code === 200) {
+                        this.tjxdList = response.albums.slice(0, 6)
+                        this.addZjpl(this.tjxdList)
+                    }
+                })
             },
             /**
              * @description: 获取精品歌单list
@@ -100,6 +129,22 @@ import listy from './listy.vue'
                 })
             },
             /**
+             * @description: 添加专辑评论
+             * @param {type} 
+             * @return: 
+             */ 
+            addZjpl(list) {
+                let requireList = []
+                list.forEach(v => {
+                    requireList.push(this.$http.commentAlbum({id: v.id, limit: 1}))
+                })
+                Promise.all(requireList).then(res => {
+                    res.forEach((v, i) => {
+                        this.$set(list[i], 'comment', v)
+                    })
+                })
+            },
+            /**
              * @description: 添加歌曲评论
              * @param {type} 
              * @return: 
@@ -111,7 +156,7 @@ import listy from './listy.vue'
                 })
                 Promise.all(requireList).then(res => {
                     res.forEach((v, i) => {
-                        this.$set(this.tjgqList[i], 'comment', v)
+                        this.$set(list[i], 'comment', v)
                     })
                 })
             },
