@@ -26,4 +26,6 @@ export default {
     newSong: (data) => http('get', '/top/song', data),
     // 新碟（最新专辑）
     newAlbum: (data) => http('get', '/album/newest', data),
+    // 排行榜(热歌风向标)
+    rank: (data) => http('get', '/top/list', data)
 }

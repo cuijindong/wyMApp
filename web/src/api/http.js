@@ -15,7 +15,7 @@ function http (method, url, data) {
         method: method
     }
     let instance = axios.create({
-        baseURL: baseUrl
+        baseURL: baseUrl,
     })
     return instance(option).then(response => {
         if (response.status === 200) {

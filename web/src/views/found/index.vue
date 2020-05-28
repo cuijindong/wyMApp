@@ -15,6 +15,8 @@
             <listx :gdList="jpgdList" :title="'官方精品歌单'"></listx>
             <!-- 新歌新碟 -->
             <new-song :xgList="tjxgList" :xdList="tjxdList"></new-song>
+            <!-- 热歌风向标 -->
+            <rank :rankList="rankList"></rank>
         </div>
     </div>
 </template>
@@ -25,13 +27,15 @@ import menuTab from './menuTab.vue'
 import listx from './listx.vue'
 import listy from './listy.vue'
 import newSong from './newSong'
+import rank from './rank'
     export default {
         components: {
             banner,
             menuTab,
             listx,
             listy,
-            newSong
+            newSong,
+            rank
         },
         data() {
             return {
@@ -44,7 +48,9 @@ import newSong from './newSong'
                 // 推荐新歌list
                 tjxgList: [],
                 // 推荐新碟list
-                tjxdList: []
+                tjxdList: [],
+                // 热歌风向标
+                rankList: []
             }
         },
         created () {
@@ -64,6 +70,22 @@ import newSong from './newSong'
                 this.getTjgq()
                 this.getJpgd()
                 this.getXgXd()
+                this.getRank()
+            },
+            /**
+             * @description: 获取热歌风向标list
+             * @param {type} 
+             * @return: 
+             */
+            getRank() {
+                let flag = [0, 1, 2, 3]
+                let requireList = []
+                flag.forEach(v => {
+                    requireList.push(this.$http.rank({idx: v}))
+                })
+                Promise.all(requireList).then(response => {
+                    this.rankList = response
+                })
             },
             /**
              * @description: 获取精品歌单list
