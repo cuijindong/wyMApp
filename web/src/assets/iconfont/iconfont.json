@@ -6,6 +6,48 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "12686630",
+      "name": "刷新",
+      "font_class": "icon_shuaxin",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "971577",
+      "name": "火焰",
+      "font_class": "weibiaoti1",
+      "unicode": "e634",
+      "unicode_decimal": 58932
+    },
+    {
+      "icon_id": "1333609",
+      "name": "右",
+      "font_class": "you",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "3216606",
+      "name": "火箭",
+      "font_class": "huojian",
+      "unicode": "e68b",
+      "unicode_decimal": 59019
+    },
+    {
+      "icon_id": "4905547",
+      "name": "灯泡",
+      "font_class": "dengpao",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "6265252",
+      "name": "n",
+      "font_class": "n",
+      "unicode": "e656",
+      "unicode_decimal": 58966
+    },
+    {
       "icon_id": "11808714",
       "name": "播放",
       "font_class": "icon_play",

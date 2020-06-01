@@ -17,6 +17,14 @@
             <new-song :xgList="tjxgList" :xdList="tjxdList"></new-song>
             <!-- 热歌风向标 -->
             <rank :rankList="rankList"></rank>
+            <!-- 刷新 -->
+            <div class="fd-upData">
+                <div class="fd-butt">
+                    <i class="iconfont">&#xe644;</i>
+                    <div>点击刷新</div>
+                </div>
+                <div class="fd-text">换一批内容</div>
+            </div>
         </div>
     </div>
 </template>
@@ -220,6 +228,25 @@ import rank from './rank'
     width: 100%;
     .fd-content{
         padding: $PubPadding;
+        .fd-upData{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            .fd-butt{
+                display: flex;
+                align-items: center;
+                padding: 0 10px;
+                color: #396896;
+                .iconfont{
+                    font-size: 25px;
+                    font-weight: 600;
+                }
+            }
+        }
+        .fd-text{
+            color: #939393;
+        }
     }
 }
 </style>

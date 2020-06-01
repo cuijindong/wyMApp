@@ -5,10 +5,17 @@
           <div class="fd-button">播放全部</div>
       </div>
       <div class="fd-list">
-          <van-swipe :loop="false" :show-indicators="false" @change="change">
+          <van-swipe :loop="false" :show-indicators="false">
               <van-swipe-item v-for="(item, index) in rankList_c" :key="index">
-                  <div :id="`item${index}`" class="fd-item" :style="`background-image:linear-gradient(to top, rgba(65, 65, 65, 1) 50%, rgb(65, 65, 65, 0.5) 100%), url(${item.tracks[0].al.picUrl})`">
-                      <div class="fd-item-title">{{item.name}}</div>
+                  <div v-if="item.bgColor" class="fd-item" :style="`background-image:linear-gradient(to top, rgba(${item.bgColor[0]}, ${item.bgColor[1]}, ${item.bgColor[2]}, 1) 70%, rgba(${item.bgColor[0]}, ${item.bgColor[1]}, ${item.bgColor[2]}, 0.8) 100%), url(${item.tracks[0].al.picUrl})`">
+                      <div class="fd-item-title">
+                          <i class="iconfont fd-icon-item" v-show="index === 0">&#xe656;</i>
+                          <i class="iconfont fd-icon-item" v-show="index === 1">&#xe62e;</i>
+                          <i class="iconfont fd-icon-item" v-show="index === 2">&#xe634;</i>
+                          <i class="iconfont fd-icon-item" v-show="index === 3">&#xe68b;</i>
+                          <div>{{item.name}}</div>
+                          <i class="iconfont fd-icon-item">&#xe61d;</i>
+                      </div>
                       <div class="fd-item-item" v-for="(v, i) in item.tracks.slice(0, 3)" :key="i">
                           <div class="fd-img">
                               <img :id="`${index}_${i}`" :src="`${v.al.picUrl}?param=80y80`" crossorigin="anonymous" />
@@ -45,22 +52,26 @@ import ColorThief from 'colorthief'
     },
     computed: {
       rankList_c() {
-        let list = this.rankList.map(v => {
+        let that = this
+        let list = this.rankList.map((v, i) => {
+          getImgColor(i, v.playlist)
           return v.playlist
         })
         return list
+        function getImgColor(index, item) {
+          let colorThief = new ColorThief();
+          let img = new Image();
+          img.addEventListener('load', () => {
+              that.$set(item, 'bgColor', colorThief.getColor(img))
+          })
+          img.crossOrigin = 'Anonymous'
+          img.src = item.tracks[0].al.picUrl
+        }
       }
     },
-    methods: {
-      change(index) {
-        var colorThief = new ColorThief();
-        const img = new Image();
-        img.addEventListener('load', () => {
-            console.log(colorThief.getColor(img))
-        })
-        img.crossOrigin = 'Anonymous'
-        img.src = this.rankList_c[index].tracks[0].al.picUrl
-      }
+    data() {
+        return {
+        }
     },
   }
 </script>
@@ -88,11 +99,30 @@ import ColorThief from 'colorthief'
     .fd-list{
         width: 100%;
         .fd-item{
-            width: 100%;
+            width: calc(100% - 30px);
             padding: 10px;
+            margin-right: 10px;
             background-size: 100% 100%;
             border-radius: 10px;
             background-blend-mode:normal;
+            .fd-item-title{
+                font-size: 33px;
+                color: #f2f2f2;
+                display: flex;
+                justify-content:flex-start;
+                align-items: center;
+                margin: 10px 0 20px 0;
+                div{
+                    display: flex;
+                    line-height: 33px;
+                }
+                .iconfont{
+                    font-size: 30px;
+                    padding-right: 10px;
+                    display: flex;
+                    align-items: center;
+                }
+            }
             .fd-item-item{
                 width: 100%;
                 margin: 15px 0;
@@ -134,11 +164,12 @@ import ColorThief from 'colorthief'
                                 max-width: 70%;
                                 padding-right: 20px;
                                 font-size: 30px;
+                                color: #f2f2f2;
                             }
                             .fd-author{
                                 max-width: 30%;
                                 font-size: 23px;
-                                color: #818181;
+                                color: #737373;
                             }
                         }
                         .fd-bottom{

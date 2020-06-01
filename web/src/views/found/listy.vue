@@ -8,7 +8,7 @@
             <van-swipe :loop="false" :show-indicators="false">
                 <van-swipe-item v-for="(item, index) in gqList_c" :key="index">
                     <div class="fd-item">
-                        <div class="fd-item-item" v-for="(v, i) in item" :key="i">
+                        <div class="fd-item-item" v-for="(v, i) in item" :key="i" @click.stop="handlePlay(v)">
                             <div class="fd-img">
                                 <img v-if="v.songs" :src="v.songs.al.picUrl" alt="">
                             </div>
@@ -53,6 +53,11 @@
                     arr.push(this.gqList.slice((i - 1) * 3, i * 3))
                 }
                 return arr
+            }
+        },
+        methods: {
+            handlePlay(item) {
+                console.log(item)
             }
         },
     }
