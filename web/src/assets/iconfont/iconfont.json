@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "8949022",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
       "icon_id": "7192329",
       "name": "心",
       "font_class": "xin2",
@@ -53,13 +60,6 @@
       "font_class": "gengduo",
       "unicode": "e62c",
       "unicode_decimal": 58924
-    },
-    {
-      "icon_id": "6047787",
-      "name": "后退",
-      "font_class": "houtui",
-      "unicode": "e64e",
-      "unicode_decimal": 58958
     },
     {
       "icon_id": "8288816",

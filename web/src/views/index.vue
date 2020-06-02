@@ -5,13 +5,14 @@
 <template>
     <div class="fd-home">
         <home-header @changeComp="handleChangeComp"></home-header>
-        <div class="fd-content" :style="`height: calc(100% - ${Object.keys(song).length ? '200px' : '100px'})`">
+        <div class="fd-content" :class="{'fd-noBottom': !isShowBottom}">
             <keep-alive>
                 <component :is="comp"></component>
             </keep-alive>
         </div>
-        <div class="fd-bottom" v-if="Object.keys(song).length">
+        <div class="fd-bottom" v-if="isShowBottom">
             <home-bottom></home-bottom>
+            <audio ref="audio" :src="song.urlInfo[0].url" autoplay="autoplay"></audio>
         </div>
         <play-page v-if="isOpenPlay"></play-page>
     </div>
@@ -25,7 +26,7 @@ import found from '@/views/found'
 import clouds from '@/views/clouds'
 import videoapp from '@/views/videoapp'
 import playPage from '@/views/playPage'
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
     export default {
         components: {
             homeHeader,
@@ -47,9 +48,22 @@ import { mapState } from 'vuex'
             }),
             ...mapState('song', {
                 song: 'song',
-            })
+            }),
+            isShowBottom() {
+                return Object.keys(this.song).length ? true : false
+            }
+        },
+        watch: {
+            isShowBottom() {
+                this.$nextTick(() => {
+                    this.setAudio(this.$refs.audio)
+                })
+            }
         },
         methods: {
+            ...mapMutations('song', {
+                setAudio: 'SET_AUDIO'
+            }),
             /**
              * @description: 改变组件
              * @param {type} 
@@ -70,5 +84,8 @@ import { mapState } from 'vuex'
    width: 100%;
    height: calc(100% - 200px);
    overflow: auto;
+}
+.fd-noBottom{
+   height: calc(100% - 100px);
 }
 </style>

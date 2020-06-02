@@ -51,13 +51,13 @@ import { mapState, mapMutations } from 'vuex'
     .fd-left{
         display: flex;
         .fd-img{
-            height: 70px;
-            width: 70px;
+            height: 80px;
+            width: 80px;
             img{
                 width: 100%;
                 height: 100%;
                 border-radius: 50%;
-                box-shadow: 0px 0px 3px #888888;
+                border: 1px solid #818181;
             }
         }
         .fd-text{
@@ -67,12 +67,12 @@ import { mapState, mapMutations } from 'vuex'
             padding-left: 10px;
             text-align: left;
             .fd-title{
-                font-size: 22px;
+                font-size: 30px;
                 margin-bottom: 5px;
             }
             .fd-lyric{
-                margin-top: 5px;
-                font-size: 16px;
+                font-size: 20px;
+                color: #818181;
             }
         }
     }
@@ -81,20 +81,20 @@ import { mapState, mapMutations } from 'vuex'
         align-items: center;
         .fd-play{
             margin-right: 40px;
-            border: 1px solid #000;
-            width: 40px;
-            height: 40px;
+            border: 2px solid #818181;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             .iconfont{
-                font-size: 25px;
+                font-size: 35px;
             }
         }
         .fd-more{
             .iconfont{
-                font-size: 33px;
+                font-size: 45px;
             }
         }
     }
