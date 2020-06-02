@@ -13,6 +13,7 @@
         <div class="fd-bottom" v-if="Object.keys(song).length">
             <home-bottom></home-bottom>
         </div>
+        <play-page v-if="isOpenPlay"></play-page>
     </div>
 </template>
 
@@ -23,7 +24,8 @@ import my from '@/views/my'
 import found from '@/views/found'
 import clouds from '@/views/clouds'
 import videoapp from '@/views/videoapp'
-import { mapState, mapMutations, mapActions } from 'vuex'
+import playPage from '@/views/playPage'
+import { mapState } from 'vuex'
     export default {
         components: {
             homeHeader,
@@ -32,30 +34,22 @@ import { mapState, mapMutations, mapActions } from 'vuex'
             found,          // 发现
             clouds,         // 云村
             videoapp,          // 视频
+            playPage,       // 播放页
         },
         data() {
             return {
                 comp: 'found',
-                song: {0:0}
             }
         },
         computed: {
             ...mapState({
-                userInfo: 'userInfo'
-            })
-        },
-        mounted () {
-            this.changeUserInfo({name: 454545}).then(() => {
-                console.log(this.userInfo)
+                isOpenPlay: 'isOpenPlay'
+            }),
+            ...mapState('song', {
+                song: 'song',
             })
         },
         methods: {
-            ...mapMutations({
-                setUserInfo: 'SET_USER_INFO'
-            }),
-            ...mapActions({
-                changeUserInfo: 'changeUserInfo'
-            }),
             /**
              * @description: 改变组件
              * @param {type} 

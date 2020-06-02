@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
     export default {
         props: {
             gqList: {
@@ -56,8 +57,25 @@
             }
         },
         methods: {
-            handlePlay(item) {
-                console.log(item)
+            ...mapMutations('song', {
+                setSong: 'SET_SONG',
+            }),
+            /**
+             * @description: 点击歌曲
+             * @param {type} 
+             * @return: 
+             */
+            async handlePlay(item) {
+                let urlInfo = await this.$http.songUrl({id: item.id})
+                let lyric = await this.$http.lyric({id: item.id})
+
+                let songInfo = {
+                    base: item,
+                    urlInfo: urlInfo.data,
+                    lyric: lyric.lrc
+                }
+                console.log(songInfo)
+                this.setSong(songInfo)
             }
         },
     }

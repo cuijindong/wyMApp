@@ -6,6 +6,111 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "7192329",
+      "name": "心",
+      "font_class": "xin2",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "566179",
+      "name": "心",
+      "font_class": "xin",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "579810",
+      "name": "分享",
+      "font_class": "fenxiang",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "688097",
+      "name": "上一首 上一个",
+      "font_class": "shangyishoushangyige",
+      "unicode": "e78a",
+      "unicode_decimal": 59274
+    },
+    {
+      "icon_id": "688128",
+      "name": "下一个 下一首",
+      "font_class": "xiayigexiayishou",
+      "unicode": "e7a5",
+      "unicode_decimal": 59301
+    },
+    {
+      "icon_id": "2150876",
+      "name": "评论",
+      "font_class": "pinglun",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "4641128",
+      "name": "更多",
+      "font_class": "gengduo",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "6047787",
+      "name": "后退",
+      "font_class": "houtui",
+      "unicode": "e64e",
+      "unicode_decimal": 58958
+    },
+    {
+      "icon_id": "8288816",
+      "name": "VIP",
+      "font_class": "VIP",
+      "unicode": "e83d",
+      "unicode_decimal": 59453
+    },
+    {
+      "icon_id": "12036455",
+      "name": "循环01",
+      "font_class": "xunhuan",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "12036461",
+      "name": "随机01",
+      "font_class": "suiji",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "12036466",
+      "name": "循环02",
+      "font_class": "xunhuan1",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "12813717",
+      "name": "下载",
+      "font_class": "xiazai",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "1306473",
+      "name": "更多",
+      "font_class": "gengduo-2",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "10143249",
+      "name": "暂停",
+      "font_class": "zanting",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
       "icon_id": "12686630",
       "name": "刷新",
       "font_class": "icon_shuaxin",

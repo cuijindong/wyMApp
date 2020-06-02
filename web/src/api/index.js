@@ -27,5 +27,9 @@ export default {
     // 新碟（最新专辑）
     newAlbum: (data) => http('get', '/album/newest', data),
     // 排行榜(热歌风向标)
-    rank: (data) => http('get', '/top/list', data)
+    rank: (data) => http('get', '/top/list', data),
+    // 获取音乐url
+    songUrl: (data) => http('get', '/song/url', data),
+    // 获取歌词
+    lyric: (data) => http('get', '/lyric', data)
 }

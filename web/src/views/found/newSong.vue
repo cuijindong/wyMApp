@@ -22,9 +22,9 @@
                                         <div class="fd-name fd-textOverflow">{{v.name}}</div>
                                         <div class="fd-author fd-textOverflow">- {{v.artists[0].name}}</div>
                                     </div>
-                                    <div class="fd-bottom">
+                                    <div class="fd-bottom" v-if="v.comment">
                                         <span class="fd-flag">独家</span>
-                                        <div class="fd-text fd-textOverflow" v-if="v.comment">{{v.comment.comments[0].content}}</div>
+                                        <div class="fd-text fd-textOverflow" v-if="v.comment.comments.length">{{v.comment.comments[0].content}}</div>
                                     </div>
                                 </div>
                                 <div class="fd-right">
