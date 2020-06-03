@@ -12,9 +12,9 @@
         </div>
         <div class="fd-bottom" v-if="isShowBottom">
             <home-bottom></home-bottom>
-            <audio ref="audio" :src="song.urlInfo[0].url" autoplay="autoplay"></audio>
         </div>
         <play-page v-if="isOpenPlay"></play-page>
+        <audio ref="audio" :src="song.urlInfo ? song.urlInfo[0].url : ''" autoplay="autoplay"></audio>
     </div>
 </template>
 
@@ -53,12 +53,8 @@ import { mapState, mapMutations } from 'vuex'
                 return Object.keys(this.song).length ? true : false
             }
         },
-        watch: {
-            isShowBottom() {
-                this.$nextTick(() => {
-                    this.setAudio(this.$refs.audio)
-                })
-            }
+        mounted () {
+            this.setAudio(this.$refs.audio)
         },
         methods: {
             ...mapMutations('song', {

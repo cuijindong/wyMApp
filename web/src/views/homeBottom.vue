@@ -10,8 +10,8 @@
           </div>
       </div>
       <div class="fd-right">
-          <div class="fd-play">
-              <i class="iconfont">&#xe774;</i>
+          <div class="fd-play" id="fd-play">
+              <arc-progress ref="arcProgress"></arc-progress>
           </div>
           <div class="fd-more">
               <i class="iconfont">&#xe615;</i>
@@ -22,18 +22,24 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
+import arcProgress from 'components/arcProgress'
   export default {
+      components: {
+          arcProgress,      // 播放按钮（带进度条）
+      },
     computed: {
         ...mapState('song', {
             song: 'song'
         })
+    },
+    mounted () {
+        this.$refs.arcProgress.init(document.getElementById('fd-play'))
     },
     methods: {
         ...mapMutations({
             setIsOpenPlay: 'SET_IS_OPEN_PLAY'
         }),
         handleBottom() {
-            debugger
             this.setIsOpenPlay(true)
         }
     },
@@ -81,16 +87,11 @@ import { mapState, mapMutations } from 'vuex'
         align-items: center;
         .fd-play{
             margin-right: 40px;
-            border: 2px solid #818181;
             width: 55px;
             height: 55px;
-            border-radius: 50%;
             display: flex;
             justify-content: center;
-            align-items: center;
-            .iconfont{
-                font-size: 35px;
-            }
+            align-items: center; 
         }
         .fd-more{
             .iconfont{
