@@ -79,7 +79,7 @@ import { mapState, mapMutations } from 'vuex'
 .fd-content{
    width: 100%;
    height: calc(100% - 200px);
-   overflow: auto;
+   overflow: hidden;
 }
 .fd-noBottom{
    height: calc(100% - 100px);

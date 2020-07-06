@@ -13,6 +13,11 @@ Vue.use(VueRouter)
     name: 'Home',
     component: () => import('@/views/index.vue'),
   },
+  {
+    path: '/search',
+    name: 'Search',
+    component: () => import('@/views/search/index.vue')
+  }
 ]
 
 const router = new VueRouter({

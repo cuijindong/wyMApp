@@ -31,5 +31,9 @@ export default {
     // 获取音乐url
     songUrl: (data) => http('get', '/song/url', data),
     // 获取歌词
-    lyric: (data) => http('get', '/lyric', data)
+    lyric: (data) => http('get', '/lyric', data),
+    // 热搜榜
+    searchHot: (data) => http('get', '/search/hot/detail', data),
+    // 搜索建议
+    suggest: (data) => http('get', '/search/suggest', data)
 }

@@ -3,7 +3,7 @@
  * @Date: 2020-05-20 21:15:42
 --> 
 <template>
-    <div class="fd-found">
+    <div class="fd-found fd-scroll" @scroll="handlerScroll">
         <banner></banner>
         <div class="fd-content">
             <menu-tab></menu-tab>
@@ -36,6 +36,7 @@ import listx from './listx.vue'
 import listy from './listy.vue'
 import newSong from './newSong'
 import rank from './rank'
+import scrollMixin from '../../mixin/scrolMixinl'
     export default {
         components: {
             banner,
@@ -45,6 +46,7 @@ import rank from './rank'
             newSong,
             rank
         },
+        mixins: [scrollMixin],
         data() {
             return {
                 // 推荐精选歌单list
@@ -65,7 +67,6 @@ import rank from './rank'
             this.init()
         },
         mounted () {
-            
         },
         methods: {
             /**
@@ -226,6 +227,8 @@ import rank from './rank'
 <style lang="scss" scoped>
 .fd-found{
     width: 100%;
+    height: 100%;
+    overflow-y: auto;
     .fd-content{
         padding: $PubPadding;
         .fd-upData{

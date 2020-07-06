@@ -17,9 +17,6 @@ import { mapState } from 'vuex'
         parentWidth: 0
       }
     },
-    mounted () {
-      
-    },
     methods: {
       /**
        * @description: 初始化播放按钮
@@ -67,14 +64,29 @@ import { mapState } from 'vuex'
         ctx.lineWidth = 2
         ctx.strokeStyle = "red"
         ctx.stroke()
-        ctx.beginPath()
-        ctx.moveTo(canvasWidth / 2 - innerR / 2, canvasWidth / 2 + innerR / 2)
-        ctx.lineTo(canvasWidth / 2 + innerR / 2, canvasWidth / 2)
-        ctx.lineTo(canvasWidth / 2 - innerR / 2, canvasWidth / 2 - innerR / 2)
-        ctx.lineWidth = 2
-        ctx.strokeStyle = "#F0F0F0"
-        ctx.closePath()
-        ctx.stroke()
+        if (this.audio.paused) {
+          let side = innerR / 1.5
+          let centreSide = side * Math.cos(Math.PI / 6)
+          ctx.beginPath()
+          ctx.moveTo(-centreSide * 0.42265,-side / 2)
+          ctx.lineTo(centreSide * 0.57735, 0)
+          ctx.lineTo(-centreSide * 0.42265,side / 2)
+          ctx.lineWidth = 2
+          ctx.strokeStyle = "#F0F0F0"
+          ctx.closePath()
+          ctx.stroke()
+        } else {
+          let equalx = innerR / 8
+          let equaly = innerR / 3
+          ctx.beginPath()
+          ctx.moveTo(-equalx, equaly)
+          ctx.lineTo(-equalx, -equaly)
+          ctx.stroke()
+          ctx.beginPath()
+          ctx.moveTo(equalx, equaly)
+          ctx.lineTo(equalx, -equaly)
+          ctx.stroke()
+        }
       }
     }
   }

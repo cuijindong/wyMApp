@@ -18,7 +18,7 @@
             >
             <span>{{item.name}}</span></div>
         </div>
-        <div class="fd-right">
+        <div class="fd-right" @click="handlerSearch">
             <span class="iconfont">&#xe61c;</span>
         </div>
     </div>
@@ -71,6 +71,14 @@
                 this.actived = item.value
                 this.$emit('getValue', item.value)
                 this.$emit('getItem', item)
+            },
+            /**
+             * @description: 搜索
+             * @param {type} 
+             * @return: 
+             */
+            handlerSearch() {
+                this.$router.push('/search')
             }
         },
     }
