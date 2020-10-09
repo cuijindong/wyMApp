@@ -1,5 +1,6 @@
 <!--
  * @Author: cjd
+ * @detaile: 头部
  * @Date: 2020-05-18 21:37:00
 --> 
 <template>
@@ -38,7 +39,9 @@ export default {
 
 <style lang="scss" scoped>
 .fd-header {
-  height: 100px;
+  height: $headerHeight;
   width: 100%;
+  display: flex;
+  align-items: center;
 }
 </style>

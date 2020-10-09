@@ -12,7 +12,7 @@ function http (method, url, data) {
         url: url,
         data: method === 'post' ? qs.stringify(data) : {},
         params: method === 'get' ? data : {},
-        method: method
+        method: method,
     }
     let instance = axios.create({
         baseURL: baseUrl,
@@ -23,6 +23,20 @@ function http (method, url, data) {
         }
     })
 }
+
+/**
+ * 请求拦截器
+ */
+axios.interceptors.request.use((config) => {
+    let token = window.localStorage.getItem('accessToken')
+    if (token) {
+        config.headers.accessToken = token
+        return config
+    }
+}, (err) => {
+    return Promise.reject(err)
+})
+
 export {
     http
 }

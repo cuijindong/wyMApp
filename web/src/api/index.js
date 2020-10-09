@@ -24,8 +24,10 @@ export default {
     commentAlbum: (data) => http('get', '/comment/album', data),
     // 新歌
     newSong: (data) => http('get', '/top/song', data),
-    // 新碟（最新专辑）
+    // 新碟
     newAlbum: (data) => http('get', '/album/newest', data),
+    // 推荐新歌
+    personalizedNewsong: (data) => http('get', '/personalized/newsong', data),
     // 排行榜(热歌风向标)
     rank: (data) => http('get', '/top/list', data),
     // 获取音乐url
@@ -35,5 +37,17 @@ export default {
     // 热搜榜
     searchHot: (data) => http('get', '/search/hot/detail', data),
     // 搜索建议
-    suggest: (data) => http('get', '/search/suggest', data)
+    suggest: (data) => http('get', '/search/suggest', data),
+    // 手机登录
+    cellphone: (data) => http('get', '/login/cellphone', data),
+    // 登陆状态
+    status: (data) => http('get', '/login/status', data),
+    // 退出登录
+    logout: (data) => http('get', '/logout', data),
+    // 推荐歌曲
+    recommendSongs: (data) => http('get', '/recommend/songs', data),
+    // 获取歌单详情
+    songsterDetail: (data) => http('get', '/playlist/detail', data),
+
+
 }

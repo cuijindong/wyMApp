@@ -1,19 +1,24 @@
+<!--
+ * @Author: cjd
+ * @detaile: 底部
+ * @Date: 2020-05-18 21:37:00
+--> 
 <template>
   <div class="fd-bottom" @click.stop="handleBottom">
       <div class="fd-left">
           <div class="fd-img">
-              <img :src="song.base.songs.al.picUrl" alt="">
+              <img v-lazy="song.base.album.picUrl" alt="">
           </div>
           <div class="fd-text">
-              <div class="fd-title">{{song.base.name}}</div>
-              <div class="fd-lyric">我也不知道</div>
+              <div class="fd-title-bott">{{song.base.name}}</div>
+              <div class="fd-lyric">{{song.base.artists[0].name}}</div>
           </div>
       </div>
       <div class="fd-right">
           <div class="fd-play" id="fd-play">
               <arc-progress ref="arcProgress"></arc-progress>
           </div>
-          <div class="fd-more">
+          <div class="fd-more" @click.stop="openSongList">
               <i class="iconfont">&#xe615;</i>
           </div>
       </div>
@@ -24,21 +29,31 @@
 import { mapState, mapMutations } from 'vuex'
 import arcProgress from 'components/arcProgress'
   export default {
-      components: {
-          arcProgress,      // 播放按钮（带进度条）
-      },
+    components: {
+        arcProgress,      // 播放按钮（带进度条）
+    },
     computed: {
         ...mapState('song', {
             song: 'song'
+        }),
+        ...mapState({
+            songListState: 'songListState'
         })
-    },
-    mounted () {
-        this.$refs.arcProgress.init(document.getElementById('fd-play'))
     },
     methods: {
         ...mapMutations({
-            setIsOpenPlay: 'SET_IS_OPEN_PLAY'
+            setIsOpenPlay: 'SET_IS_OPEN_PLAY',
+            setSongListState: 'SET_SONG_LIST_STATE'
         }),
+        /**
+         * 打开播放列表弹窗
+         */
+        openSongList() {
+            this.setSongListState(true)
+        },
+        /**
+         * 打开歌词弹窗
+         */
         handleBottom() {
             this.setIsOpenPlay(true)
         }
@@ -54,8 +69,10 @@ import arcProgress from 'components/arcProgress'
     padding: 0 20px;
     justify-content: space-between;
     align-items: center;
+    border-top: 1px solid #dcdee0;
     .fd-left{
         display: flex;
+        align-items: center;
         .fd-img{
             height: 80px;
             width: 80px;
@@ -72,7 +89,7 @@ import arcProgress from 'components/arcProgress'
             justify-content: center;
             padding-left: 10px;
             text-align: left;
-            .fd-title{
+            .fd-title-bott{
                 font-size: 30px;
                 margin-bottom: 5px;
             }
@@ -85,17 +102,22 @@ import arcProgress from 'components/arcProgress'
     .fd-right{
         display: flex;
         align-items: center;
+        height: 100%;
         .fd-play{
-            margin-right: 40px;
-            width: 55px;
-            height: 55px;
+            width: 80px;
+            height: 80px;
             display: flex;
             justify-content: center;
             align-items: center; 
         }
         .fd-more{
+            height: 100%;
+            display: flex;
+            align-items: center;
             .iconfont{
-                font-size: 45px;
+                margin-left: 30px;
+                font-size: 40px;
+                color: rgb(124, 124, 124);
             }
         }
     }

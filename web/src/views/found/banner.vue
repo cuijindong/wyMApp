@@ -6,7 +6,7 @@
     <div class="fd-swipe">
         <van-swipe :autoplay="3000" indicator-color="red">
             <van-swipe-item v-for="(item, index) in imgList" :key="index">
-                <img :src="item.pic">
+                <img v-lazy="item.pic">
                 <div class="fd-tit" :style="`background: ${item.titleColor === 'red' ? '#ef3739' : '#4c84bf'};`">{{item.typeTitle}}</div>
             </van-swipe-item>
         </van-swipe>
@@ -39,7 +39,6 @@
 <style lang="scss" scoped>
 .fd-swipe{
     height: 250px;
-    margin: 10px 0 10px 0;
     .van-swipe{
         height: 100%;
         .van-swipe-item{

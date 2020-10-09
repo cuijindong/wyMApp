@@ -9,7 +9,12 @@
     </keep-alive>
   </div>
 </template>
-
+<script>
+export default {
+  created() {
+  }
+}
+</script>
 <style lang="scss">
 @import './assets/css/index.scss';
 #app{

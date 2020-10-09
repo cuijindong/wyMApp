@@ -5,34 +5,55 @@
 <template>
   <div class="fd-header">
     <div class="fd-left">
-      <div class="fd-back">
+      <div class="fd-back" @click="close">
         <i class="iconfont">&#xe65c;</i>
       </div>
     </div>
     <div class="fd-text">
-      <div class="fd-title">{{song.base.name}}</div>
+      <div class="fd-titleH">{{song.base.name}}</div>
       <div class="fd-author">{{song.base.artists[0].name}}</div>
     </div>
-    <div class="fd-right">
+    <div class="fd-right" @click="share">
       <i class="iconfont">&#xe623;</i>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
+import { Toast } from 'vant';
   export default {
     computed: {
       ...mapState('song', {
         song: 'song'
       })
+    },
+    methods: {
+      ...mapMutations({
+        setIsOpenPlay: 'SET_IS_OPEN_PLAY',
+      }),
+      /**
+       * 关闭歌词弹窗
+       */
+      close() {
+        this.setIsOpenPlay(false)
+      },
+      /**
+       * 分享
+       */
+      share() {
+        Toast({
+          message: '暂未开发...',
+          position: 'top',
+        });
+      }
     }
   }
 </script>
 
 <style lang="scss" scoped>
 .fd-header{
-  height: 120px;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,7 +69,7 @@ import { mapState } from 'vuex'
   .fd-text{
     flex-grow: 1;
     text-align: left;
-    .fd-title{
+    .fd-titleH{
       font-size: 35px;
     }
     .fd-author{

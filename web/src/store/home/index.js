@@ -1,4 +1,4 @@
-import song from './song'
+import song from './song/index'
 
 export default {
   song

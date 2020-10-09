@@ -1,5 +1,5 @@
 <template>
-    <div class="fd-yAxisList fd-marginBott">
+    <div class="fd-yAxisList fd-margin">
         <div class="fd-top">
             <div class="fd-title">
               <span @click="flag = '新歌'" :class="{'noActive': flag === '新碟'}">新歌</span>
@@ -13,26 +13,7 @@
                 <van-swipe-item v-for="(item, index) in xgList_c" :key="index">
                     <div class="fd-item">
                         <div class="fd-item-item" v-for="(v, i) in item" :key="i">
-                            <div class="fd-img">
-                                <img v-if="v.album" :src="v.album.blurPicUrl " alt="">
-                            </div>
-                            <div class="fd-details">
-                                <div class="fd-left">
-                                    <div class="fd-tops">
-                                        <div class="fd-name fd-textOverflow">{{v.name}}</div>
-                                        <div class="fd-author fd-textOverflow">- {{v.artists[0].name}}</div>
-                                    </div>
-                                    <div class="fd-bottom" v-if="v.comment">
-                                        <span class="fd-flag">独家</span>
-                                        <div class="fd-text fd-textOverflow" v-if="v.comment.comments.length">{{v.comment.comments[0].content}}</div>
-                                    </div>
-                                </div>
-                                <div class="fd-right">
-                                    <div class="fd-item">
-                                        <i class="iconfont fd-icon-item">&#xe60f;</i>
-                                    </div>
-                                </div>
-                            </div>
+                            <single :song="v" :songList="xgList"></single>
                         </div>
                     </div>
                 </van-swipe-item>
@@ -43,26 +24,7 @@
               <van-swipe-item v-for="(item, index) in xdList_c" :key="index">
                   <div class="fd-item">
                       <div class="fd-item-item" v-for="(v, i) in item" :key="i">
-                          <div class="fd-img">
-                              <img :src="v.picUrl" alt="">
-                          </div>
-                          <div class="fd-details">
-                              <div class="fd-left">
-                                  <div class="fd-tops">
-                                      <div class="fd-name fd-textOverflow">{{v.name}}</div>
-                                      <div class="fd-author fd-textOverflow">- {{v.artists[0].name}}</div>
-                                  </div>
-                                  <div class="fd-bottom">
-                                      <span class="fd-flag">独家</span>
-                                      <div class="fd-text fd-textOverflow" v-if="v.comment">{{v.comment.comments[0].content}}</div>
-                                  </div>
-                              </div>
-                              <!-- <div class="fd-right">
-                                  <div class="fd-item">
-                                      <i class="iconfont fd-icon-item">&#xe60f;</i>
-                                  </div>
-                              </div> -->
-                          </div>
+                          <songster :songster="v"></songster>
                       </div>
                   </div>
               </van-swipe-item>
@@ -72,6 +34,8 @@
 </template>
 
 <script>
+import single from '../../components/single'
+import songster from '../../components/songsterTwo'
     export default {
         props: {
             xgList: {
@@ -82,6 +46,10 @@
                 type: Array,
                 default: () => []
             }
+        },
+        components: {
+            single,      // 歌曲
+            songster    // 歌单
         },
         data () {
             return {
@@ -105,7 +73,7 @@
                 }
                 return arr
             }
-        },
+        }
     }
 </script>
 
@@ -119,18 +87,6 @@
         justify-content: space-between;
         align-items: center;
         margin: 15px 0;
-        .fd-title{
-            font-size: 33px;
-            font-weight: bold;
-            color: #242424;
-            padding: 10px 0;
-        }
-        .fd-button{
-            padding: 5px 15px;
-            border: 1px solid #ebebeb;
-            border-radius: 50px;
-            box-shadow: 0px 0px 3px #888888;
-        }
     }
     .fd-list{
         width: 100%;

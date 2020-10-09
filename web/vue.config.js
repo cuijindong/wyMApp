@@ -33,7 +33,7 @@ module.exports = {
     },   
     // 开发环境访问地址、代理等配置
     devServer: {
-        host: '192.168.1.104',
+        host: '192.168.1.105',
         port: 8000,
         proxy: {
             [BaseUrl.ROOT]: {
@@ -44,6 +44,16 @@ module.exports = {
                     [`^${BaseUrl.ROOT}`]: ''
                 }
             }
+        }
+    },
+    configureWebpack: {
+        externals: {
+            "vue": 'Vue',
+            "vuex": 'Vuex',
+            "vue-router": 'VueRouter',
+            "jquery": '$',
+            "axios": 'axios',
+            "vue-lazyload": "VueLazyload",
         }
     }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="fd-yAxisList fd-marginBott">
+  <div class="fd-yAxisList fd-margin">
       <div class="fd-top">
           <div class="fd-title">热歌风向标</div>
           <div class="fd-button">播放全部</div>
@@ -16,7 +16,7 @@
                           <div>{{item.name}}</div>
                           <i class="iconfont fd-icon-item">&#xe61d;</i>
                       </div>
-                      <div class="fd-item-item" v-for="(v, i) in item.tracks.slice(0, 3)" :key="i">
+                      <div class="fd-item-item" v-for="(v, i) in item.tracks.slice(0, 3)" :key="i" @click.stop="handlePlay_c(v, item.tracks)">
                           <div class="fd-img">
                               <img :id="`${index}_${i}`" :src="`${v.al.picUrl}?param=80y80`" crossorigin="anonymous" />
                           </div>
@@ -43,6 +43,7 @@
 
 <script>
 import ColorThief from 'colorthief'
+import { mapMutations } from 'vuex'
   export default {
     props: {
       rankList: {
@@ -73,6 +74,19 @@ import ColorThief from 'colorthief'
         return {
         }
     },
+    methods: {
+        ...mapMutations('song', {
+            setSong: 'SET_SONG',
+        }),
+        /**
+         * @description: 点击歌曲
+         * @param {type} 
+         * @return: 
+         */
+        handlePlay_c(item, songList) {            
+            this.$coment.handlePlay(item, songList)
+        }
+    },
   }
 </script>
 
@@ -83,18 +97,6 @@ import ColorThief from 'colorthief'
         justify-content: space-between;
         align-items: center;
         margin: 15px 0;
-        .fd-title{
-            font-size: 33px;
-            font-weight: bold;
-            color: #242424;
-            padding: 10px 0;
-        }
-        .fd-button{
-            padding: 5px 15px;
-            border: 1px solid #ebebeb;
-            border-radius: 50px;
-            box-shadow: 0px 0px 3px #888888;
-        }
     }
     .fd-list{
         width: 100%;

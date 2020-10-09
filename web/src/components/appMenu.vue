@@ -1,11 +1,12 @@
 <!--
  * @Author: cjd
+ * @detaile: 头部公用组件
  * @Date: 2020-05-13 22:23:31
  -->
 <template>
     <div class="fd-menu">
         <div class="fd-left">
-            <span class="iconfont">&#xe613;</span>
+            <span class="iconfont" @click="logout">&#xe613;</span>
         </div>
         <div class="fd-center">
             <div 
@@ -63,6 +64,15 @@
         },
         methods: {
             /**
+             * 退出
+             */
+            logout() {
+                this.$http.logout().then(() => {
+                    window.localStorage.removeItem('accessToken')
+                    this.$router.push('/login')
+                })
+            },
+            /**
              * @description: tab点击，事件来抛出
              * @param {type} 
              * @return: 
@@ -98,8 +108,8 @@
         display: flex;
         span{
             font-size: 45px;
-            color: #1b1b1b;
-            font-weight: 600;
+            color: rgb(124, 124, 124);
+            // font-weight: bolder;
         }
     }
     .fd-center{
@@ -129,8 +139,8 @@
         transition: transform .3s;
         span{
             font-size: 45px;
-            color: #1b1b1b;
-            font-weight: 500;
+            color: rgb(124, 124, 124);
+            // font-weight: bolder ;
         }
         &:active{
             transform:scale(1.2, 1.2);

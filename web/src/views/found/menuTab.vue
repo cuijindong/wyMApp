@@ -39,7 +39,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin: $menuTabMargin;
     .fd-tap-item{
         display: flex;
         flex-direction: column;

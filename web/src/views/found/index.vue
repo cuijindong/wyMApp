@@ -66,8 +66,6 @@ import scrollMixin from '../../mixin/scrolMixinl'
         created () {
             this.init()
         },
-        mounted () {
-        },
         methods: {
             /**
              * @description: 初始化
@@ -77,7 +75,6 @@ import scrollMixin from '../../mixin/scrolMixinl'
             init() {
                 this.getJxgd()
                 this.getTjgq()
-                this.getJpgd()
                 this.getXgXd()
                 this.getRank()
             },
@@ -97,41 +94,29 @@ import scrollMixin from '../../mixin/scrolMixinl'
                 })
             },
             /**
-             * @description: 获取精品歌单list
+             * @description: 新歌/新碟
              * @param {type} 
              * @return: 
              */
             getXgXd() {
-                this.$http.newSong({type: 7}).then(response => {
+                this.$http.personalizedNewsong().then(response => {
                     if (response.code === 200) {
-                        this.tjxgList = response.data.slice(0, 6)
-                        this.addGqpl(this.tjxgList)
+                        if(response.result.length >= 6) {
+                            let songList = response.result.slice(0, 6)
+                            this.tjxgList = songList.map(v => {
+                                return v.song
+                            })
+                        }
                     }
                 })
                 this.$http.newAlbum().then(response => {
                     if (response.code === 200) {
                         this.tjxdList = response.albums.slice(0, 6)
-                        this.addZjpl(this.tjxdList)
                     }
                 })
             },
             /**
-             * @description: 获取精品歌单list
-             * @param {type} 
-             * @return: 
-             */            
-            getJpgd() {
-                this.$http.gdflHot().then(res => {
-                    let tags = res.tags
-                    this.$http.jpgd({limit: 6, cat: tags[0].name}).then(response => {
-                        if (response.code === 200) {
-                            this.jpgdList = response.playlists
-                        }
-                    })
-                })
-            },
-            /**
-             * @description: 获取精选歌单list
+             * @description: 获取 推荐/官方精选歌单list
              * @param {type} 
              * @return: 
              */            
@@ -143,6 +128,11 @@ import scrollMixin from '../../mixin/scrolMixinl'
                             this.jxgdList = response.playlists
                         }
                     })
+                    this.$http.jpgd({limit: 6, cat: tags[0].name}).then(response => {
+                        if (response.code === 200) {
+                            this.jpgdList = response.playlists
+                        }
+                    })
                 })
             },
             /**
@@ -151,11 +141,11 @@ import scrollMixin from '../../mixin/scrolMixinl'
              * @return: 
              */ 
             getTjgq() {
-                this.search('民谣', 1, 12).then(response => {
+                this.$http.recommendSongs().then(response => {
                     if (response.code === 200) {
-                        this.tjgqList = response.result.songs
-                        this.addGqpl(this.tjgqList)
-                        this.addGqxq(this.tjgqList)
+                        if (response.recommend.length > 12) {
+                            this.tjgqList = response.recommend.slice(0, 12)
+                        }
                     }
                 })
             },

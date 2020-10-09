@@ -6,6 +6,104 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "755560",
+      "name": "视频",
+      "font_class": "video",
+      "unicode": "e635",
+      "unicode_decimal": 58933
+    },
+    {
+      "icon_id": "10047330",
+      "name": "更多",
+      "font_class": "ziyuan",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "2767703",
+      "name": "播放",
+      "font_class": "icon-",
+      "unicode": "e647",
+      "unicode_decimal": 58951
+    },
+    {
+      "icon_id": "2767705",
+      "name": "下一首",
+      "font_class": "icon-1",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "2767707",
+      "name": "上一首",
+      "font_class": "icon-2",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
+      "icon_id": "2767708",
+      "name": "暂停",
+      "font_class": "icon-3",
+      "unicode": "e64a",
+      "unicode_decimal": 58954
+    },
+    {
+      "icon_id": "2767709",
+      "name": "单曲循环",
+      "font_class": "icon-4",
+      "unicode": "e64b",
+      "unicode_decimal": 58955
+    },
+    {
+      "icon_id": "2767710",
+      "name": "列表循环",
+      "font_class": "icon-5",
+      "unicode": "e64c",
+      "unicode_decimal": 58956
+    },
+    {
+      "icon_id": "2767712",
+      "name": "随机播放",
+      "font_class": "icon-6",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    },
+    {
+      "icon_id": "16648555",
+      "name": "菜单",
+      "font_class": "caidan",
+      "unicode": "e61f",
+      "unicode_decimal": 58911
+    },
+    {
+      "icon_id": "10605731",
+      "name": "密码",
+      "font_class": "mima",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "1471052",
+      "name": "删除",
+      "font_class": "shanchu1",
+      "unicode": "e677",
+      "unicode_decimal": 58999
+    },
+    {
+      "icon_id": "356196",
+      "name": "用户",
+      "font_class": "yonghu",
+      "unicode": "e658",
+      "unicode_decimal": 58968
+    },
+    {
+      "icon_id": "3369133",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e670",
+      "unicode_decimal": 58992
+    },
+    {
       "icon_id": "8949022",
       "name": "返回",
       "font_class": "fanhui",
@@ -67,27 +165,6 @@
       "font_class": "VIP",
       "unicode": "e83d",
       "unicode_decimal": 59453
-    },
-    {
-      "icon_id": "12036455",
-      "name": "循环01",
-      "font_class": "xunhuan",
-      "unicode": "e610",
-      "unicode_decimal": 58896
-    },
-    {
-      "icon_id": "12036461",
-      "name": "随机01",
-      "font_class": "suiji",
-      "unicode": "e60d",
-      "unicode_decimal": 58893
-    },
-    {
-      "icon_id": "12036466",
-      "name": "循环02",
-      "font_class": "xunhuan1",
-      "unicode": "e611",
-      "unicode_decimal": 58897
     },
     {
       "icon_id": "12813717",

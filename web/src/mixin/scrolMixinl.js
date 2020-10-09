@@ -11,11 +11,13 @@ export default {
     // 设置滚动条位置
     document.getElementsByClassName('fd-scroll')[0].scrollTop = this.scrollPosition
   },
-  methods: {
+  created() {
     /**
      * 滚动触发（debounce：防抖）
      */
-    handlerScroll: utils.dAndT.debounce('getScrollTop', 100, false),
+    this.handlerScroll = utils.dAndT.debounce(this, 'getScrollTop', 100, false)
+  },
+  methods: {
     /**
      * 获取当前滚动轴位置
      */
